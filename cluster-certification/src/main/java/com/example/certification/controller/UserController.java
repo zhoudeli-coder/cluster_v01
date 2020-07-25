@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/")
+    @PostMapping
     public String add(User user){
         userRepository.save(user);
         return "添加成功" + user.getId();
@@ -26,7 +26,7 @@ public class UserController {
         return "删除成功";
     }
 
-    @PutMapping("/")
+    @PutMapping
     public String update(User user) {
         userRepository.save(user);
         return "修改成功";
@@ -39,7 +39,6 @@ public class UserController {
 
     @GetMapping("/list")
     public List<User> list(){
-        List<User> userList = userRepository.findAll();
-        return userList;
+        return userRepository.findAll();
     }
 }
