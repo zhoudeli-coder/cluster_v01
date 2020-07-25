@@ -34,3 +34,38 @@
     public interface UserRepository extends JpaRepository<User, Integer> {
     }
 ~~~
+
+- JpaRepository 方法调用
+~~~
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/")
+    public String add(User user){
+        userRepository.save(user);
+        return "添加成功" + user.getId();
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        userRepository.deleteById(id);
+        return "删除成功";
+    }
+
+    @PutMapping("/")
+    public String update(User user) {
+        userRepository.save(user);
+        return "修改成功";
+    }
+
+    @GetMapping("/{id}")
+    public User get(@PathVariable("id") Integer id) {
+        return userRepository.getOne(id);
+    }
+
+    @GetMapping("/list")
+    public List<User> list(){
+        List<User> userList = userRepository.findAll();
+        return userList;
+    }
+~~~
