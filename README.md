@@ -25,8 +25,8 @@
 
 - 注解支持
 ~~~
-@EnableJpaRepositories(basePackages = "com.example")
-@EntityScan("com.example.common.entity")
+    @EnableJpaRepositories(basePackages = "com.example")
+    @EntityScan("com.example.common.entity")
 ~~~
 
 - 接口实现
